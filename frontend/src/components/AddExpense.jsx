@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useFilter } from "../context/FilterContext";
 
 const AddExpense = ({onAdd}) => {
-  const {fetchTransactions} = useFilter();
+  const {newTransactionFlag,setNewTransactionFlag} = useFilter();
 
   const getCurrentDate = () => {
     const today = new Date();
@@ -57,8 +57,7 @@ const AddExpense = ({onAdd}) => {
       // socket emission
       setSuccess("Transaction successfully added!");
       
-      fetchTransactions();
-
+      setNewTransactionFlag(!newTransactionFlag);
       resetForm();
     } catch (err) {
       console.error("Error while adding transaction:", err);
