@@ -8,7 +8,7 @@ export default function BalanceLineChart() {
   const {LineData} = useFilter();
 
   return (
-    <div className="w-[60%] h-[250px]">
+    <div className="w-[75%] h-[400px] rounded-lg p-6 mx-auto">
       <ResponsiveContainer>
         <LineChart data={LineData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" />

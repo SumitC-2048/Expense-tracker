@@ -17,7 +17,7 @@ const DonutChartComponent = () => {
 
   return (
           <div className=' rounded-lg p-6 w-full max-w-md mx-auto'>
-        <div className="text-center text-xl font-bold mb-4">Category-wise Expense Distribution</div>
+        {/* <div className="text-center text-xl font-bold mb-4">Category-wise Expense Distribution</div> */}
 
     <PieChart width={400} height={400}>
       <Pie

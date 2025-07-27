@@ -1,20 +1,3 @@
-// return a pie chart component 
-// such that it can handle data from backnend with following format
-
-/*
-[
-  { _id: 'education', totalExpense: 3500 },
-  { _id: 'other', totalExpense: 203748 },
-  { _id: 'transport', totalExpense: 222 },
-  { _id: 'entertainment', totalExpense: 11111 },
-  { _id: 'utilities', totalExpense: 4815 },
-  { _id: 'food', totalExpense: 13962 }
-]
-
-label should be _id and value should be totalExpense
-
-*/
-
 import React, { useEffect, useState } from 'react';
 import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 import axios from 'axios';
@@ -31,12 +14,12 @@ const COLORS = [
 ];
 
 const PieChartComponent = () => {
-  const { pieData, setPieData } = useFilter();
+  const { pieData } = useFilter();
 
   return (
       <div className=' rounded-lg p-6 w-full max-w-md mx-auto'>
-        <div className="text-center text-xl font-bold mb-4">Category-wise Expense Distribution</div>
-    <PieChart width={400} height={400} className=''>
+        {/* <div className="text-center text-xl font-bold mb-4">Category-wise Expense Distribution</div> */}
+    <PieChart width={400} height={400}>
 
       <Pie
         data={pieData}

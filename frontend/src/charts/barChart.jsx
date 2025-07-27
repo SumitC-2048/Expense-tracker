@@ -7,14 +7,12 @@ import { useFilter } from '../context/FilterContext';
 export default function MonthlyBarChart() {
   const {barData} = useFilter();
   return (
-    <div className="w-[60%] h-[250px]">
+    <div className="w-[75%] h-[400px] rounded-lg p-6 mx-auto">
       <ResponsiveContainer>
         <BarChart
           data={barData}
           margin={{
             top: 5,
-            right: 30,
-            left: 20,
             bottom: 5,
           }}
         >

@@ -20,7 +20,7 @@ const Statistics = () => {
       {/* Chart Type Selector */}
       <div className="mb-6">
         <div className="bg-white rounded-lg shadow-md p-4">
-          <h3 className="text-lg font-semibold text-gray-800 mb-3">Chart Type</h3>
+          {/* <h3 className="text-lg font-semibold text-gray-800 mb-3">Chart Type</h3> */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             <button
               onClick={() => setChart('pie')}
@@ -71,14 +71,14 @@ const Statistics = () => {
       </div>
 
       {/* Chart Display */}
-      <div className="bg-white rounded-lg shadow-md p-6">
+      <div className="bg-white rounded-lg shadow-md">
         <div className="flex justify-center items-center min-h-[400px]">
           {chart === 'pie' && <PieChart />}
           {chart === 'donut' && <DonutChart />}
           {chart === 'bar' && <BarChart />}
           {chart === 'line' && <LineChart />}
         </div>
-        <div className="mb-4 text-center">
+        <div className="mt-1 text-center">
           <span className="text-sm text-gray-600">{chartDescriptions[chart]}</span>
         </div>
       </div>
