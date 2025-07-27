@@ -20,28 +20,18 @@ import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 import axios from 'axios';
 import { useFilter } from '../context/FilterContext';
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FF6347', '#6A5ACD'];
+const COLORS = [
+  '#0088FE', // Blue
+  '#00C49F', // Teal
+  '#FFBB28', // Yellow-Orange
+  '#FF8042', // Orange
+  '#FF6347', // Tomato
+  '#6A5ACD', // Slate Blue
+  '#8A2BE2'  // BlueViolet (new)
+];
+
 const PieChartComponent = () => {
-  const [data, setData] = useState([]);
-  const email = localStorage.getItem('email');
   const { pieData, setPieData } = useFilter();
-
-  // const fetchPieData = async () => {
-  //   try {
-  //     const response = await axios.get('http://localhost:3000/stats/pie', { params: { email } });
-  //     if (response.data.success) {
-  //       setData(response.data.data);
-  //     } else {
-  //       console.error(response.data.message);
-  //     }
-  //   } catch (error) {
-  //     console.error('Error fetching pie chart data:', error);
-  //   }
-  // };
-  // useEffect(() => {
-
-  //   fetchPieData();
-  // }, [email]);
 
   return (
       <div className=' rounded-lg p-6 w-full max-w-md mx-auto'>

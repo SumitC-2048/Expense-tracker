@@ -72,14 +72,14 @@ const Statistics = () => {
 
       {/* Chart Display */}
       <div className="bg-white rounded-lg shadow-md p-6">
-        <div className="mb-4 text-center">
-          <span className="text-sm text-gray-600">{chartDescriptions[chart]}</span>
-        </div>
         <div className="flex justify-center items-center min-h-[400px]">
           {chart === 'pie' && <PieChart />}
           {chart === 'donut' && <DonutChart />}
           {chart === 'bar' && <BarChart />}
           {chart === 'line' && <LineChart />}
+        </div>
+        <div className="mb-4 text-center">
+          <span className="text-sm text-gray-600">{chartDescriptions[chart]}</span>
         </div>
       </div>
     </div>

@@ -1,0 +1,16 @@
+give meaning full names and description to statics filters
+
+give context to Donut and line charts
+
+set these charts properly that is align their height width according to right panel so that it looks proper and mantain padding and margin of this chart components as well
+
+we need to add edit and delete transactions as well
+firt option: delete all transaction which are with filtered
+second option: we should be able to select and delete that transaction
+
+adjust statistics panel so that scroll bar keeps only for charts and not on filter types
+
+make selection bar of all filters responsive and some filters does not work properly we have to fix them
+
+make proper good readme
+

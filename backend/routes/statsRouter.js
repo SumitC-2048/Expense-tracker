@@ -189,69 +189,75 @@ router.get('/donut',async (req,res) => {
         })
     }
 });
-router.get('/line',async (req,res) => {
-    const {email} = req.query;
-    console.log('email', email)
-    if(!email){
-        return res.json({
-            success: false,
-            message: 'login required'
-        });
-    }
-    try{
-        const data = await Transaction.aggregate([
-                                {
-                                    $match: {
-                                    date: {
-                                        $gte: new Date(new Date().setDate(new Date().getDate() - 30))
-                                    }
-                                    }
-                                },
-                                {
-                                    $project: {
-                                    amount: {
-                                        $cond: [
-                                        { $eq: ["$type", "credit"] },
-                                        "$amount",
-                                        { $multiply: ["$amount", -1] }
-                                        ]
-                                    },
-                                    day: {
-                                        $dateToString: { format: "%d %b", date: "$date" } // e.g. 01 Jan
-                                    }
-                                    }
-                                },
-                                {
-                                    $group: {
-                                    _id: "$day",
-                                    balance: { $sum: "$amount" }
-                                    }
-                                },
-                                {
-                                    $sort: { _id: 1 }
-                                },
-                                {
-                                    $project: {
-                                    _id: 0,
-                                    date: "$_id",
-                                    balance: 1
-                                    }
-                                }
-                                ]);
 
-        return res.json({
-            success: true,
-            message: 'line-chart: date and total balance', 
-            data
-        });
-    }catch(error){
-        res.json({
-            success: false,
-            message: error.message
-        })
-    }
+router.get('/line', async (req, res) => {
+  const { email } = req.query;
+
+  if (!email) {
+    return res.json({
+      success: false,
+      message: 'Login required',
+    });
+  }
+
+  try {
+    const startOfMonth = new Date(new Date().getFullYear(), new Date().getMonth(), 1);
+    const startOfNextMonth = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 1);
+
+    const data = await Transaction.aggregate([
+      {
+        $match: {
+          email,
+          date: {
+            $gte: startOfMonth,
+            $lt: startOfNextMonth,
+          },
+        },
+      },
+      {
+        $project: {
+          amount: {
+            $cond: [
+              { $eq: ['$type', 'credit'] },
+              '$amount',
+              { $multiply: ['$amount', -1] },
+            ],
+          },
+          day: {
+            $dateToString: { format: '%d %b', date: '$date' }, // Includes year
+          },
+        },
+      },
+      {
+        $group: {
+          _id: '$day',
+          balance: { $sum: '$amount' },
+        },
+      },
+      {
+        $sort: { _id: 1 },
+      },
+      {
+        $project: {
+          _id: 0,
+          date: '$_id',
+          balance: 1,
+        },
+      },
+    ]);
+
+    return res.json({
+      success: true,
+      message: 'line-chart: date and total balance',
+      data,
+    });
+  } catch (error) {
+    return res.json({
+      success: false,
+      message: error.message || 'Something went wrong',
+    });
+  }
 });
-
 
 
 

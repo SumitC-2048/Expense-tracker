@@ -3,44 +3,6 @@ import { useState,useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import axios from 'axios';
 import { useFilter } from '../context/FilterContext';
-// const data = [
-//   { month: 'Jan', income: 5000, expense: 3000 },
-//   { month: 'Feb', income: 4500, expense: 3500 },
-//   { month: 'Mar', income: 6000, expense: 4000 },
-//   { month: 'Mar', income: 6000, expense: 4000 },
-//   { month: 'Mar', income: 6000, expense: 4000 },
-// ];
-
-/*
-barData: 
-"data": [
-        {
-            "income": 77777,
-            "expense": 0,
-            "monthNumber": 9,
-            "year": 2024
-        },
-        {
-            "income": 0,
-            "expense": 233333,
-            "monthNumber": 12,
-            "year": 2024
-        },
-        {
-            "income": 2011,
-            "expense": 0,
-            "monthNumber": 1,
-            "year": 2025
-        },
-        {
-            "income": 500,
-            "expense": 210869,
-            "monthNumber": 6,
-            "year": 2025
-        }
-    ]
-*/
-
 
 export default function MonthlyBarChart() {
   const {barData} = useFilter();
