@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import DashBoard from './pages/DashBoard';
 import SignIn from './pages/Signin';
-import Signup from './pages/Signup';
+import Signup from './pages/signup';
 import { FilterProvider } from './context/FilterContext';
 
 const App = () => {

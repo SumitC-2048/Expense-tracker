@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import PieChart from "../charts/PieChart";
-import BarChart from "../charts/BarChart"
-import DonutChart from "../charts/DonutChart"
+import BarChart from "../charts/barChart"
+import DonutChart from "../charts/donutChart"
 import  LineChart  from "../charts/LineChart";
 import { useFilter } from "../context/FilterContext";
 
