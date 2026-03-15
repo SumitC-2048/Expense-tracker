@@ -1,8 +1,21 @@
 # Expense Tracker App
 
+An end-to-end MERN stack application to track your expenses, visualize statistics, and manage your financial history. This project includes both a Node.js/Express backend and a React/Vite frontend.
 
+## Features
+- User authentication (sign up, login)
+- Add, view, and delete expenses
+- Filter expenses by date, category, and more
+- Visualize data with charts (Bar, Pie, Donut, Line)
+- Statistics dashboard for insights
+- Responsive and modern UI
 
+## Technologies Used
+- **Frontend:** React, Vite, CSS
+- **Backend:** Node.js, Express
+- **Database:** MongoDB
 
+## Folder Structure
 
 
 # Expense Tracker App
