@@ -31,7 +31,7 @@
               } else if (error.request) {
                   console.log("No response from server");
               } else {
-                  console.log(error.message);
+                  console.log(error.message); 
               }
           }
       }

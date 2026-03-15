@@ -4,7 +4,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import axios from 'axios';
 import { useFilter } from '../context/FilterContext';
 
-export default function BalanceLineChart() {
+export default function BalanceLineChart() { 
   const {LineData} = useFilter();
 
   return (

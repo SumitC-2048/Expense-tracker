@@ -4,7 +4,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsive
 import axios from 'axios';
 import { useFilter } from '../context/FilterContext';
 
-export default function MonthlyBarChart() {
+export default function MonthlyBarChart() { 
   const {barData} = useFilter();
   return (
     <div className="w-[75%] h-[400px] rounded-lg p-6 mx-auto">

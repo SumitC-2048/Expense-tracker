@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import DashBoard from './pages/DashBoard';
 import SignIn from './pages/Signin';
-import Signup from './pages/signup';
+import Signup from './pages/Signup';
 import { FilterProvider } from './context/FilterContext';
 
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
               <FilterProvider>
                 <DashBoard />
               </FilterProvider>
-            }
+            } 
           />
 
           <Route path="/" element={<Navigate to="/DashBoard" replace />} />

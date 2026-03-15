@@ -3,7 +3,7 @@ import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
 import axios from 'axios';
 import { useFilter } from '../context/FilterContext';
 
-const COLORS = [
+const COLORS = [ 
   '#0088FE', // Blue
   '#00C49F', // Teal
   '#FFBB28', // Yellow-Orange
