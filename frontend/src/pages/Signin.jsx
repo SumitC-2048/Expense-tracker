@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import axios from 'axios';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 const SignIn = () => {
         const [email, setEmail] = useState("");
         const [password, setPassword] = useState("");
@@ -13,7 +15,7 @@ const SignIn = () => {
         const handleSignIn = async (e) => {
             try {
                 e.preventDefault();
-                const response = await axios.post('http://localhost:3000/auth/signin',{
+                const response = await axios.post(`${BACKEND_URL}/auth/signin`,{
                     email: email,
                     password: password
                 });

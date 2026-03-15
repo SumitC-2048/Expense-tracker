@@ -2,7 +2,7 @@ import { useContext, createContext, useState, useEffect } from "react";
 import axios from "axios";
 
 const FilterContext = createContext({});
-const BACKEND_URL = "http://localhost:3000";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const FilterProvider = ({ children }) => {
   const email = localStorage.getItem("email");

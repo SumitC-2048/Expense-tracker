@@ -61,6 +61,7 @@ const createTransaction = async (req,res)=>{
             message: 'Transaction has been created!!'
         })
     }catch(err){
+        console.log(`Getting error while fetching `)
         return res.json({
             success: false,
             message: err.message
@@ -96,7 +97,7 @@ const getAllTransaction = async (req,res) => {
         }
         
         // Date range filter
-         if(startDate){
+        if(startDate){
             query.date = {
                 $gte: new Date(startDate)
             };

@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 import { useFilter } from "../context/FilterContext";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 const AddExpense = ({onAdd}) => {
   const {newTransactionFlag,setNewTransactionFlag} = useFilter();
 
@@ -45,8 +47,9 @@ const AddExpense = ({onAdd}) => {
         note,
       };
       console.log(transaction);
+      console.log('Backend URL',BACKEND_URL);
       const response = await axios.post(
-        "http://localhost:3000/transaction/create",
+        `${BACKEND_URL}/transaction/create`,
         transaction
       );
 

@@ -9,8 +9,8 @@ import { useFilter } from "../context/FilterContext";
 const chartDescriptions = {
   pie: "Shows the percentage of expenses for each category.",
   donut: "Shows the total expense for each category.",
-  bar: "Shows expense and income for each month of the past year.",
-  line: "Shows the monthly balance (income minus expense) for the past year."
+  bar: "Shows expense and income for each month of the year.",
+  line: "Shows the monthly balance trend"
 };
 
 const Statistics = () => {

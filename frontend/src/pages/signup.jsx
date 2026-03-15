@@ -3,6 +3,7 @@ import "./auth.css";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const Signup = () => {
     const [username, setUsername] = useState("");
@@ -13,7 +14,7 @@ const Signup = () => {
     const handleSignUp = async (e) => {
         try {
             e.preventDefault();
-            const response = await axios.post('http://localhost:3000/auth/signup',{
+            const response = await axios.post(`${BACKEND_URL}/auth/signup`,{
                 Username: username,
                 email: email,
                 password: password
@@ -25,8 +26,13 @@ const Signup = () => {
                 navigate('/DashBoard');
             }
         } catch (error) { 
-            console.log('inside catch block');
-            console.log(error);
+            if (error.response) {
+                console.log(error.response.data.message);
+            } else if (error.request) {
+                console.log("No response from server");
+            } else {
+                console.log(error.message);
+            }
         }
     }
 

@@ -13,5 +13,4 @@ router.get('/', (req, res) => {
 router.post('/signin', SigninController);
 router.post('/signup', SignupController);
 
-
 export {router as authRouter};
