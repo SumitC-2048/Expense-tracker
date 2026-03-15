@@ -2,8 +2,8 @@ import React from 'react';
 import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import DashBoard from './pages/DashBoard';
-import SignIn from './pages/Signin.jsx';
-import Signup from './pages/Signup.jsx';
+import SignIn from './pages/Signin';
+import Signup from './pages/Signup';
 import { FilterProvider } from './context/FilterContext';
 
 const App = () => {
