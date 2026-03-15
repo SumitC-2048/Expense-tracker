@@ -1,6 +1,6 @@
 import React from 'react';
 import History from './History.jsx';
-import Statistics from './statistics.jsx';
+import Statistics from './Statistics.jsx';
 import {useEffect,useState} from 'react'
 import axios from 'axios';
 
