@@ -1,7 +1,8 @@
 import "./auth.css";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import axios from 'axios';
+import { AUTH_NOTICE_KEY } from '../api/client.js';
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -10,7 +11,16 @@ const SignIn = () => {
         const [password, setPassword] = useState("");
         const [message, setMessage] = useState("");
         const [error, setError] = useState("");
+        const [sessionNotice, setSessionNotice] = useState("");
         const navigate = useNavigate();
+
+        useEffect(() => {
+            const notice = sessionStorage.getItem(AUTH_NOTICE_KEY);
+            if (notice) {
+                setSessionNotice(notice);
+                sessionStorage.removeItem(AUTH_NOTICE_KEY);
+            }
+        }, []);
         
         const handleSignIn = async (e) => {
             try {
@@ -59,6 +69,12 @@ const SignIn = () => {
               </div>
             </div>
            */}
+
+          {sessionNotice && (
+            <div className="mb-4 rounded-lg border border-amber-200 bg-amber-50 p-3">
+              <p className="text-sm font-medium text-amber-900">{sessionNotice}</p>
+            </div>
+          )}
 
           {/* Error Message */}
           {error && (

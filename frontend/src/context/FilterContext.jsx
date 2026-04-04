@@ -1,5 +1,5 @@
 import { useContext, createContext, useState, useEffect } from "react";
-import axios from "axios";
+import client from "../api/client.js";
 
 const FilterContext = createContext({});
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
@@ -32,7 +32,7 @@ export const FilterProvider = ({ children }) => {
     console.log("Inside fetch Transaction");
 
     try {
-      const response = await axios.get(
+      const response = await client.get(
         `${BACKEND_URL}/transaction/all`,
         {
           headers: {
@@ -74,7 +74,7 @@ export const FilterProvider = ({ children }) => {
   useEffect(() => {
     const fetchPieData = async () => {
       try {
-        const response = await axios.get(`${BACKEND_URL}/stats/pie`, {
+        const response = await client.get(`${BACKEND_URL}/stats/pie`, {
           headers: {
             "authorization": `Bearer ${token}`
           }
@@ -95,7 +95,7 @@ export const FilterProvider = ({ children }) => {
   useEffect(() => {
     const fetchDonutData = async () => {
       try {
-        const response = await axios.get(`${BACKEND_URL}/stats/donut`, { 
+        const response = await client.get(`${BACKEND_URL}/stats/donut`, { 
           headers: {
             "authorization": `Bearer ${token}`
           }
@@ -117,7 +117,7 @@ export const FilterProvider = ({ children }) => {
   useEffect(() => {
     const fetchBarData = async () => {
       try {
-        const response = await axios.get(`${BACKEND_URL}/stats/bar`, {
+        const response = await client.get(`${BACKEND_URL}/stats/bar`, {
           headers: {
             "authorization": `Bearer ${token}`
           }
@@ -140,7 +140,7 @@ export const FilterProvider = ({ children }) => {
   useEffect(() => {
     const fetchLineData = async () => {
       try {
-        const response = await axios.get(`${BACKEND_URL}/stats/line`, {
+        const response = await client.get(`${BACKEND_URL}/stats/line`, {
           headers: {
             "authorization": `Bearer ${token}`
           }

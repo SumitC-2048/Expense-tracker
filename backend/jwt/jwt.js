@@ -5,7 +5,7 @@ const generateToken = (email) => {
     return jwt.sign(
         {id: email},
         process.env.JWT_SECRET,
-        {expiresIn: "20m"} // 1 week
+        {expiresIn: "7d"} // 1 week
     )
 }
 

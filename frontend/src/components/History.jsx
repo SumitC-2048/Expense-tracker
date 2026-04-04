@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import axios from "axios";
+import client from "../api/client.js";
 import { useFilter } from "../context/FilterContext";
 import TransactionEditModal from "./TransactionEditModal.jsx";
 
@@ -180,7 +180,7 @@ const History = () => {
     const token = localStorage.getItem("token");
     try {
       if (confirm.kind === "one") {
-        const res = await axios.delete(
+        const res = await client.delete(
           `${BACKEND_URL}/transaction/delete/${confirm.id}`,
           { headers: { authorization: `Bearer ${token}` } }
         );
@@ -191,7 +191,7 @@ const History = () => {
         showBanner("success", "Transaction deleted.");
         setSelectedIds((p) => p.filter((x) => x !== String(confirm.id)));
       } else if (confirm.kind === "bulk") {
-        const res = await axios.post(
+        const res = await client.post(
           `${BACKEND_URL}/transaction/delete-bulk`,
           { ids: confirm.ids },
           { headers: { authorization: `Bearer ${token}` } }
@@ -206,7 +206,7 @@ const History = () => {
         );
         setSelectedIds([]);
       } else if (confirm.kind === "filtered") {
-        const res = await axios.delete(`${BACKEND_URL}/transaction/filtered`, {
+        const res = await client.delete(`${BACKEND_URL}/transaction/filtered`, {
           headers: { authorization: `Bearer ${token}` },
           params: filterParams(ctxForParams),
         });

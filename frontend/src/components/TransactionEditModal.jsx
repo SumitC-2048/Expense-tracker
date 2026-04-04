@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import client from "../api/client.js";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -54,7 +54,7 @@ const TransactionEditModal = ({ transaction, onClose, onSaved }) => {
     setSaving(true);
     const token = localStorage.getItem("token");
     try {
-      const response = await axios.put(
+      const response = await client.put(
         `${BACKEND_URL}/transaction/edit/${transaction._id}`,
         {
           date,

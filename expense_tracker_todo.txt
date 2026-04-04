@@ -8,7 +8,7 @@ adjust statistics panel so that scroll bar keeps only for charts and not on filt
 
 we need to add edit and delete transactions in frontend 
 first option: delete all transaction which are with filtered
-second option: we should be able to select and delete that transaction
+second option: we should be able to select and delete that transaction [done]
 
 
 make selection bar of all filters responsive and some filters does not work properly we have to fix them

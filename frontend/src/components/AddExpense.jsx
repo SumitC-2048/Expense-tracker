@@ -1,4 +1,4 @@
-import axios from "axios";
+import client from "../api/client.js";
 import { useState } from "react";
 import { useFilter } from "../context/FilterContext";
 
@@ -43,7 +43,7 @@ const AddExpense = ({onAdd}) => {
       };
       console.log(transaction);
       console.log('Backend URL',BACKEND_URL);
-      const response = await axios.post(
+      const response = await client.post(
         `${BACKEND_URL}/transaction/create`,
         { 
           date,

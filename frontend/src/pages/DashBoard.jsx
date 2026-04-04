@@ -1,7 +1,5 @@
 import Header from '../components/Header.jsx'
 import AddExpense from '../components/AddExpense.jsx';
-import {useEffect,useState} from 'react'
-import axios from 'axios';
 import RightPanel from '../components/RightPanel.jsx';
 
 const DashBoard = () => {
