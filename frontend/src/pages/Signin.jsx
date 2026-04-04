@@ -23,7 +23,7 @@ const SignIn = () => {
                 if(response.data.success){
                     console.log("User logged in successfully");
                     setError("");
-                    localStorage.setItem('email',email);
+                    localStorage.setItem('token',response.data.token);
                     navigate('/DashBoard');
                 }else{
                     setError(response.data.message);

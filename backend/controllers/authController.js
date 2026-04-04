@@ -1,5 +1,6 @@
 import User from "../models/users.js";
 import bcrypt from 'bcrypt';
+import generateToken from '../jwt/jwt.js';
 
 const SigninController = async (req,res) => {
     try{
@@ -24,16 +25,16 @@ const SigninController = async (req,res) => {
             });
         }
 
-        return res.status(200).json({ 
+        return res.status(200).json({
             success: true,
+            user: user,
             message: 'Welcome Back!',
-            user,
+            token: generateToken(user.email)
         });
 
     }
     catch(err){
-        console.log('inside catch block');
-        console.log('error message',err.message);
+        console.log(`Error while signin: ${err.message}`);
         return res.status(401).json({
             success: false,
             message: err.message
@@ -44,6 +45,7 @@ const SigninController = async (req,res) => {
 const SignupController = async (req,res) => {
     try{
         const {Username,email,password} = req.body;
+        console.log('Inside Signup Controller');
         console.log(Username);
         console.log(email);
         console.log(password);
@@ -70,14 +72,19 @@ const SignupController = async (req,res) => {
             email: email,
             password: hashedPassword
         });
+
         console.log(NewUser);
+        console.log(`User ${Username} Created Successfully`);
+
         return res.status(201).json({
             success: true,
             message: 'New User has been created',
-            user: NewUser
+            user: NewUser,
+            token: generateToken(email)
         });
     }
     catch(err){
+        console.log(`Error while creating a User ${err.message}`)
         res.status(400).json({
             success: false,
             message: err.message

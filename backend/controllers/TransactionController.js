@@ -7,9 +7,11 @@ const getCurrentDate = () => {
 const createTransaction = async (req,res)=>{
     try{
         console.log("Create Transaction");
-        const { email, date, amount, type, category, note } = req.body;
-        let curDate = getCurrentDate();
-        if(date==null){
+        
+        const { amount, type, category, note } = req.body;
+        const {email} = req.user;
+        let {date} = req.body;
+        if(!date){
             date=new Date();
         }
         const inputDate = new Date(date); // `date` is from your form state
@@ -46,7 +48,6 @@ const createTransaction = async (req,res)=>{
         
         const newTransaction = await Transaction.create({
             email: email,
-            // transactionId: (Math.random()),
             type: type,
             amount: amount,
             category: category,
@@ -74,7 +75,7 @@ const getAllTransaction = async (req,res) => {
     try{
         console.log('Get all Transactions');
 
-        const email = req.query.email;
+        const {email} = req.user;
         if(!email){
             return res.json({
                 success: false,
@@ -139,7 +140,8 @@ const getAllTransaction = async (req,res) => {
 const editTransaction = async (req,res) => {
     try{
         console.log("Edit Transaction with id: ",req.params.id);
-        const { email, date, amount, type, category, note } = req.body;
+        const { date, amount, type, category, note } = req.body;
+        const {email} = req.user;
         if(date==null){
             date=getCurrentDate();
         }
@@ -188,7 +190,7 @@ const editTransaction = async (req,res) => {
 const deleteTransaction = async (req,res) => {
     try{
         console.log("Delete Transaction with id: ",req.params.id);
-        const {email} = req.body;
+        const {email} = req.user;
         if(!email){
             return res.json({
                 message: 'Login required!!',

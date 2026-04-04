@@ -6,6 +6,7 @@ const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const FilterProvider = ({ children }) => {
   const email = localStorage.getItem("email");
+  const token = localStorage.getItem("token");
 
   // States for filter criteria
   const [type, setType] = useState("");
@@ -32,6 +33,9 @@ export const FilterProvider = ({ children }) => {
       const response = await axios.get(
         `${BACKEND_URL}/transaction/all`,
         {
+          headers: {
+            "authorization": `Bearer ${token}`
+          },
           params: {
             type,
             category,
@@ -70,7 +74,9 @@ export const FilterProvider = ({ children }) => {
     const fetchPieData = async () => {
       try {
         const response = await axios.get(`${BACKEND_URL}/stats/pie`, {
-          params: { email },
+          headers: {
+            "authorization": `Bearer ${token}`
+          }
         });
         if (response.data.success) {
           setPieData(response.data.data);
@@ -88,7 +94,11 @@ export const FilterProvider = ({ children }) => {
   useEffect(() => {
     const fetchDonutData = async () => {
       try {
-        const response = await axios.get(`${BACKEND_URL}/stats/donut`, { params: { email } });
+        const response = await axios.get(`${BACKEND_URL}/stats/donut`, { 
+          headers: {
+            "authorization": `Bearer ${token}`
+          }
+        });
         if (response.data.success) {
           setDonutData(response.data.data);
         } else {
@@ -107,7 +117,9 @@ export const FilterProvider = ({ children }) => {
     const fetchBarData = async () => {
       try {
         const response = await axios.get(`${BACKEND_URL}/stats/bar`, {
-          params: { email },
+          headers: {
+            "authorization": `Bearer ${token}`
+          }
         });
         if (response.data.success) {
           setBarData(response.data.data);
@@ -128,7 +140,9 @@ export const FilterProvider = ({ children }) => {
     const fetchLineData = async () => {
       try {
         const response = await axios.get(`${BACKEND_URL}/stats/line`, {
-          params: { email }
+          headers: {
+            "authorization": `Bearer ${token}`
+          }
         });
         if (response.data.success) {
           setLineData(response.data.data);

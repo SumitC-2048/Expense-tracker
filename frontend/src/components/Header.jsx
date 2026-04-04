@@ -6,10 +6,12 @@ import axios from 'axios';
 
 const Header = () => {
     const navigate = useNavigate();
-    const isLoggedin = !!localStorage.getItem('email');
+    const isLoggedin = !!localStorage.getItem('token');
 
     const handleLogout = () => {
         localStorage.removeItem('email');
+        localStorage.removeItem('token');
+
         navigate('/signin');
     }
     const handleLogin = () => {

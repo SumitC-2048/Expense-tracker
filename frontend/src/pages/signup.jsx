@@ -22,7 +22,7 @@
               console.log(response);
               if(response.data.success){
                   console.log("User created successfully");
-                  localStorage.setItem("email",email);
+                  localStorage.setItem('token',response.data.token);
                   navigate('/DashBoard');
               }
           } catch (error) { 

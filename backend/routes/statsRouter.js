@@ -2,11 +2,13 @@
 import express from 'express';
 import Transaction from '../models/transactions.js';
 import { PieController } from '../controllers/statsController.js';
+import protect from '../middlewares/jwt.js'
+
 
 const router = express.Router();
 
-router.get('/pie',async (req,res) => {
-    const {email} = req.query;
+router.get('/pie',protect,async (req,res) => {
+    const {email} = req.user;
     console.log('email', email)
     if(!email){
         return res.json({
@@ -72,8 +74,8 @@ router.get('/pie',async (req,res) => {
 });
 
 
-router.get('/bar',async (req,res) => {
-    const {email} = req.query;
+router.get('/bar',protect,async (req,res) => {
+    const {email} = req.user;
     console.log('email', email)
     if(!email){
         return res.json({
@@ -152,8 +154,8 @@ router.get('/bar',async (req,res) => {
 });
 
 
-router.get('/donut',async (req,res) => {
-    const {email} = req.query;
+router.get('/donut',protect,async (req,res) => {
+    const {email} = req.user;
     console.log('email', email)
     if(!email){
         return res.json({
@@ -190,8 +192,8 @@ router.get('/donut',async (req,res) => {
     }
 });
 
-router.get('/line', async (req, res) => {
-  const { email } = req.query;
+router.get('/line',protect, async (req, res) => {
+  const { email } = req.user;
 
   if (!email) {
     return res.json({

@@ -1,16 +1,22 @@
-give meaning full names and description to statics filters
+give meaning full names and description to statics filters [Done]
 
-give context to Donut and line charts
+give context to Donut and line charts [Done]
 
 set these charts properly that is align their height width according to right panel so that it looks proper and mantain padding and margin of this chart components as well
-
-we need to add edit and delete transactions as well
-firt option: delete all transaction which are with filtered
-second option: we should be able to select and delete that transaction
-
+(make every panel/component responsive for mobile phones as well)
 adjust statistics panel so that scroll bar keeps only for charts and not on filter types
 
+we need to add edit and delete transactions in frontend 
+first option: delete all transaction which are with filtered
+second option: we should be able to select and delete that transaction
+
+
 make selection bar of all filters responsive and some filters does not work properly we have to fix them
+(from backend and frontend both side if needed)
 
 make proper good readme
 
+history panel gives records in very short window (we should make that window bigger so we can see more records at a time, so we need to make )
+
+currently on DashBoard, there is no username showing, and user also not able to see their emails and change passwords
+so when user clicks on their profile pic or name, it should show email, and change email or passowrds features

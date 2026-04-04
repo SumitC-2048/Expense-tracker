@@ -27,7 +27,7 @@ const AddExpense = ({onAdd}) => {
     setNote("");
     setError("");
     setTimeout(go,4000);
-    function go(){
+    function go(){  
         setSuccess("")
     }
   };
@@ -39,18 +39,24 @@ const AddExpense = ({onAdd}) => {
 
     try {
       const transaction = {
-        email: localStorage.getItem("email"),
-        date,
-        amount,
-        type,
-        category,
-        note,
+        
       };
       console.log(transaction);
       console.log('Backend URL',BACKEND_URL);
       const response = await axios.post(
         `${BACKEND_URL}/transaction/create`,
-        transaction
+        { 
+          date,
+          amount,
+          type,
+          category,
+          note,
+       }, // body
+        {
+          headers: {
+            "authorization": `Bearer ${localStorage.getItem('token')}`
+          }
+        }
       );
 
       if (!response.data.success) {
@@ -61,7 +67,7 @@ const AddExpense = ({onAdd}) => {
       setSuccess("Transaction successfully added!");
       
       setNewTransactionFlag(!newTransactionFlag);
-      resetForm();
+      resetForm();  
     } catch (err) {
       console.error("Error while adding transaction:", err);
       setError(err.message || "Server error");
