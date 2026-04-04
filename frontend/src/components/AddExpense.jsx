@@ -75,7 +75,7 @@ const AddExpense = ({onAdd}) => {
   };
 
   return (
-    <div className="w-full lg:w-1/3 p-6 bg-white rounded-lg shadow-md border border-gray-200">
+    <div className="w-full flex-shrink-0 rounded-lg border border-gray-200 bg-white p-4 shadow-md sm:p-5 lg:w-1/3 lg:max-w-md lg:self-start">
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-gray-800 mb-2">Add Transaction</h2>
         <p className="text-sm text-gray-600">Enter your transaction details below</p>

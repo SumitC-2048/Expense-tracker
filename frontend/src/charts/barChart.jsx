@@ -1,31 +1,34 @@
-// MonthlyBarChart.jsx
-import { useState,useEffect } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import axios from 'axios';
-import { useFilter } from '../context/FilterContext';
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+import { useFilter } from "../context/FilterContext";
 
-export default function MonthlyBarChart() { 
-  const {barData} = useFilter();
+export default function MonthlyBarChart() {
+  const { barData } = useFilter();
+
   return (
-    <div className="w-[75%] h-[400px] rounded-lg p-6 mx-auto">
-      <ResponsiveContainer>
+    <div className="h-full w-full min-h-0">
+      <ResponsiveContainer width="100%" height="100%">
         <BarChart
           data={barData}
-          margin={{
-            top: 5,
-            bottom: 5,
-          }}
+          margin={{ top: 8, right: 12, left: 4, bottom: 48 }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="monthYear" />
-          <YAxis />
+          <XAxis dataKey="monthYear" interval={0} angle={-35} textAnchor="end" height={60} tick={{ fontSize: 11 }} />
+          <YAxis tick={{ fontSize: 11 }} width={40} />
           <Tooltip />
-          <Legend />
-          <Bar dataKey="income" fill="#82ca9d" />
-          <Bar dataKey="expense" fill="#8884d8" />
+          <Legend wrapperStyle={{ fontSize: "12px" }} />
+          <Bar dataKey="income" fill="#82ca9d" name="Income" />
+          <Bar dataKey="expense" fill="#8884d8" name="Expense" />
         </BarChart>
       </ResponsiveContainer>
     </div>
   );
 }
-

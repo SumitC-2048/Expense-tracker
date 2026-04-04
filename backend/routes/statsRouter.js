@@ -91,6 +91,7 @@ router.get('/bar',protect,async (req,res) => {
         const data = await Transaction.aggregate([
                         {
                             $match: {
+                            email,
                             date: {
                                 $gte: start,
                                 $lte: end // today
@@ -138,7 +139,8 @@ router.get('/bar',protect,async (req,res) => {
             "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
         ];
         data.forEach(item => {
-            item.monthYear = item.monthNumber + '-' + item.year; // Convert month number to name
+            const m = monthNames[(item.monthNumber || 1) - 1] || String(item.monthNumber);
+            item.monthYear = `${m} ${item.year}`;
         });
         res.json({
             success: true,

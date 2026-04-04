@@ -82,48 +82,51 @@ const getAllTransaction = async (req,res) => {
                 message: 'login required!!'
             });
         }
-        let query = {email:email}
-        let type = req.query.type;
-        let category = req.query.category;
-        let startDate = req.query.startDate;
-        let endDate = req.query.endDate;
-        let minAmount = req.query.minAmount;
-        let maxAmount = req.query.maxAmount;
-        
-        if(type!=''){
-            query.type=type;
+        let query = { email };
+        const type = req.query.type;
+        const category = req.query.category;
+        const startDate = req.query.startDate;
+        const endDate = req.query.endDate;
+        const minAmount = req.query.minAmount;
+        const maxAmount = req.query.maxAmount;
+
+        if (type != null && String(type).trim() !== "") {
+            query.type = type;
         }
-        if(category!=''){
-            query.category=category;
+        if (category != null && String(category).trim() !== "") {
+            query.category = category;
         }
-        
-        // Date range filter
-        if(startDate){
-            query.date = {
-                $gte: new Date(startDate)
-            };
+
+        if (startDate || endDate) {
+            query.date = {};
+            if (startDate) {
+                const d = new Date(startDate);
+                d.setHours(0, 0, 0, 0);
+                query.date.$gte = d;
+            }
+            if (endDate) {
+                const d = new Date(endDate);
+                d.setHours(23, 59, 59, 999);
+                query.date.$lte = d;
+            }
         }
-        if(endDate){
-            query.date = {
-                $lte: new Date(endDate)
-            };
-        }
-        
-        // Amount filter
-        if(minAmount || maxAmount){
+
+        const minAmt =
+            minAmount !== undefined && minAmount !== "" ? parseFloat(minAmount) : null;
+        const maxAmt =
+            maxAmount !== undefined && maxAmount !== "" ? parseFloat(maxAmount) : null;
+        const hasMin = minAmt != null && !Number.isNaN(minAmt);
+        const hasMax = maxAmt != null && !Number.isNaN(maxAmt);
+        if (hasMin || hasMax) {
             query.amount = {};
-            if(minAmount){
-                query.amount.$gte = parseFloat(minAmount);
-            }
-            if(maxAmount){
-                query.amount.$lte = parseFloat(maxAmount);
-            }
+            if (hasMin) query.amount.$gte = minAmt;
+            if (hasMax) query.amount.$lte = maxAmt;
         }
         
         const allTransactions = await Transaction.find(query).sort({date:1});
         return res.json({
             success: true,
-            message: `All ${req.query.type} Transactinos retrived successfully`,
+            message: "Transactions retrieved successfully",
             transactions: allTransactions
         });
 

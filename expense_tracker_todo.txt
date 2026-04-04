@@ -16,7 +16,7 @@ make selection bar of all filters responsive and some filters does not work prop
 
 make proper good readme
 
-history panel gives records in very short window (we should make that window bigger so we can see more records at a time, so we need to make )
+history panel gives records in very short window (we should make that window bigger so we can see more records at a time, aspecially for mobile view)
 
 currently on DashBoard, there is no username showing, and user also not able to see their emails and change passwords
 so when user clicks on their profile pic or name, it should show email, and change email or passowrds features

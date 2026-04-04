@@ -39,7 +39,6 @@ export const FilterProvider = ({ children }) => {
           params: {
             type,
             category,
-            email,
             startDate,
             endDate,
             minAmount,

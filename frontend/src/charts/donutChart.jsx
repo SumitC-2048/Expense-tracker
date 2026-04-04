@@ -1,45 +1,45 @@
-import React, { useEffect, useState } from 'react';
-import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
-import axios from 'axios';
-import { useFilter } from '../context/FilterContext';
+import React from "react";
+import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import { useFilter } from "../context/FilterContext";
 
-const COLORS = [ 
-  '#0088FE', // Blue
-  '#00C49F', // Teal
-  '#FFBB28', // Yellow-Orange
-  '#FF8042', // Orange
-  '#FF6347', // Tomato
-  '#6A5ACD', // Slate Blue
-  '#8A2BE2'  // BlueViolet (new)
+const COLORS = [
+  "#0088FE",
+  "#00C49F",
+  "#FFBB28",
+  "#FF8042",
+  "#FF6347",
+  "#6A5ACD",
+  "#8A2BE2",
 ];
+
 const DonutChartComponent = () => {
-  const {DonutData} = useFilter();
+  const { DonutData } = useFilter();
 
   return (
-          <div className=' rounded-lg p-6 w-full max-w-md mx-auto'>
-        {/* <div className="text-center text-xl font-bold mb-4">Category-wise Expense Distribution</div> */}
-
-    <PieChart width={400} height={400}>
-      <Pie
-        data={DonutData}
-        dataKey="totalExpense"
-        nameKey="_id"
-        cx="50%"
-        cy="50%"
-        outerRadius={150}
-        innerRadius={80}
-        fill="#8884d8"
-        label
-      >
-        {DonutData.map((entry, index) => (
-          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-        ))}
-      </Pie>
-      <Tooltip />
-      <Legend />
-    </PieChart>
+    <div className="h-full w-full min-h-0">
+      <ResponsiveContainer width="100%" height="100%">
+        <PieChart margin={{ top: 8, right: 8, bottom: 8, left: 8 }}>
+          <Pie
+            data={DonutData}
+            dataKey="totalExpense"
+            nameKey="_id"
+            cx="50%"
+            cy="50%"
+            outerRadius="72%"
+            innerRadius="42%"
+            fill="#8884d8"
+            label
+          >
+            {DonutData.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
+          <Tooltip />
+          <Legend wrapperStyle={{ fontSize: "12px" }} />
+        </PieChart>
+      </ResponsiveContainer>
     </div>
   );
-}
+};
 
 export default DonutChartComponent;
