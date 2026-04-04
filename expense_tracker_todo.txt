@@ -4,7 +4,7 @@ give context to Donut and line charts [Done]
 
 set these charts properly that is align their height width according to right panel so that it looks proper and mantain padding and margin of this chart components as well
 (make every panel/component responsive for mobile phones as well)
-adjust statistics panel so that scroll bar keeps only for charts and not on filter types
+adjust statistics panel so that scroll bar keeps only for charts and not on filter types [Done]
 
 we need to add edit and delete transactions in frontend 
 first option: delete all transaction which are with filtered
@@ -16,7 +16,9 @@ make selection bar of all filters responsive and some filters does not work prop
 
 make proper good readme
 
-history panel gives records in very short window (we should make that window bigger so we can see more records at a time, aspecially for mobile view)
+history panel gives records in very short window (we should make that window bigger so we can see more records at a time, aspecially for mobile view) [almost Done]
+
+if the jwt token is expired, you should prompt the user with proper message of please sign in!
 
 currently on DashBoard, there is no username showing, and user also not able to see their emails and change passwords
 so when user clicks on their profile pic or name, it should show email, and change email or passowrds features

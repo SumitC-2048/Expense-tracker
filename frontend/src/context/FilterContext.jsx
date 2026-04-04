@@ -26,6 +26,8 @@ export const FilterProvider = ({ children }) => {
   // This is useful for components that need to update when a new transaction is added
   const [newTransactionFlag, setNewTransactionFlag] = useState(false);
 
+  const refreshTransactions = () => setNewTransactionFlag((v) => !v);
+
   const fetchTransactions = async () => {
     console.log("Inside fetch Transaction");
 
@@ -184,6 +186,7 @@ export const FilterProvider = ({ children }) => {
         LineData,
         newTransactionFlag,
         setNewTransactionFlag,
+        refreshTransactions,
       }}
     >
       {children}
